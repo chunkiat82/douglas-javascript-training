@@ -303,3 +303,22 @@ describe('Exercise 21', function() {
     });
   });
 });
+
+describe('Exercise 22', function() {
+  describe('#revocable', function () {
+    it('should add or revoke', function () {         
+      var revocable = func.revocable(func.add);      
+      assert.equal(7,revocable.invoke(3,4));
+      revocable.revoke();
+      assert.equal(undefined,revocable.invoke(11,3));      
+    });
+  });
+  describe('#revocable6', function () {
+    it('should add or revoke', function () {         
+      var revocable = func.revocable6(func.add);      
+      assert.equal(7,revocable.invoke(3,4));
+      revocable.revoke();
+      assert.equal(undefined,revocable.invoke(11,3));      
+    })
+  });
+});

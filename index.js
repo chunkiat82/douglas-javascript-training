@@ -334,3 +334,25 @@ export let counter6 = i => {
 		down: () => --i
 	}
 }
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+export var revocable = function(func){
+	var revoked = false;
+	return {
+		invoke: function(x,y){
+			return revoked ? undefined : func(x,y);
+		},
+		revoke: function(){
+			revoked = true;
+		}
+	}
+}
+
+export let revocable6 = (func) => {
+	let revoked = false;
+	return {
+		invoke: (x,y) => revoked ? undefined : func(x,y),
+		revoke: () => { revoked = true }
+	}
+}
