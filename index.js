@@ -413,17 +413,50 @@ export var exp = function(input){
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
-
-export let addg = function(input1){	
+export var addg = function(input1){	
 	if (input1 === undefined){
 		return 0;
-	}	
-	let rec = function(input2){
+	}
+	return function(input2){
 		if (input2 === undefined)
 			return input1;
 		else{
 			return addg(input2 + input1);
 		}
 	}
-	return rec;
+}
+
+export var addg1 = function(input1){		
+	return input1 === undefined ? 0 : function(input2){
+		if (input2 === undefined)
+			return input1;
+		else{
+			return addg1(input2 + input1);
+		}
+	}
+}
+
+export var addg2 = function(input1){	
+	if (input1 === undefined){
+		return 0;
+	}
+	return function(input2){
+		return addg2()
+	}
+}
+
+export let addg5 = input1 => {		
+	return input1 === undefined ? 0 : input2 => {
+		if (input2 === undefined)
+			return input1;
+		else{
+			return addg5(input2 + input1);
+		}
+	}
+}
+
+export let addg6 = input1 => {		
+	return input1 === undefined ? 0 : input2 => {
+		return input2 === undefined ? input1 : addg6(input2 + input1);		
+	}
 }

@@ -398,6 +398,26 @@ describe('Exercise 27', function() {
       assert.equal(7, addg(3)(0)(4)());   
     });
   });
+  describe('#addg1', function () {
+    it('should return a evaluated value', function () {          
+      var addg = func.addg1;
+      assert.equal(0, addg());
+      assert.equal(2, addg(2)());
+      assert.equal(9, addg(2)(7)());
+      assert.equal(7, addg(3)(0)(4)());   
+    });
+  });
+
+  describe('#addg6', function () {
+    it('should return a evaluated value', function () {          
+      var addg = func.addg6;
+      assert.equal(0, addg());
+      assert.equal(2, addg(2)());
+      assert.equal(9, addg(2)(7)());
+      assert.equal(7, addg(3)(0)(4)());
+      assert.equal(5, addg(1)(1)(0)(3)());
+    });
+  });
 });
 
 
