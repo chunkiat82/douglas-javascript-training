@@ -14,5 +14,8 @@
   "license": "ISC",
   "dependencies": {
     "babel": "^6.0.15"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.3"
   }
 }
