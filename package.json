@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --compilers js:mocha-babel test/test.js"
   },
   "repository": {
     "type": "git",
@@ -13,7 +13,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "babel": "^6.0.15"
+    "babel": "^6.0.15",
+    "babel-runtime": "^6.0.14",
+    "mocha-babel": "^3.0.0"
   },
   "devDependencies": {
     "mocha": "^2.3.3"
