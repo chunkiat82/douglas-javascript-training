@@ -293,3 +293,37 @@ export var gensymf = function(prefix){
 		return value;
 	}
 }
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+export var fibonaccif = function(x,y){
+	return concat(elementOptional([x,y]), function fibonacci(){
+		var next = x + y;
+		x = y;
+		y = next;
+		return next;
+	});
+}
+
+export var fibonacciffast = function(x,y){
+	var next = undefined;
+	return function(){
+		var next = x;
+		x = y;
+		y = y + next;
+		return next;
+	};
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+export var counter = function(i){
+	return {
+		up : function(){
+			return ++i;
+		},
+		down : function(){
+			return --i;
+		}
+	}
+}

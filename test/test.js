@@ -257,3 +257,43 @@ describe('Exercise 19', function() {
     });
   });
 });
+
+describe('Exercise 20', function() {
+  describe('#fibonaccif', function () {
+    it('should numbers', function () {   
+      var fib = func.fibonaccif(0,1);      
+      assert.equal(0,fib());
+      assert.equal(1,fib());
+      assert.equal(1,fib());
+      assert.equal(2,fib());
+      assert.equal(3,fib());
+      assert.equal(5,fib());
+    });
+  });
+  describe('#fibonacciffast', function () {
+    it('should numbers', function () {   
+      var fib = func.fibonacciffast(0,1);      
+      assert.equal(0,fib());
+      assert.equal(1,fib());
+      assert.equal(1,fib());
+      assert.equal(2,fib());
+      assert.equal(3,fib());
+      assert.equal(5,fib());
+    });
+  });
+});
+
+describe('Exercise 21', function() {
+  describe('#gensymf', function () {
+    it('should go up and down', function () {   
+      var three = function(value){
+        return (value % 3) === 0;
+      }
+      var counter = func.counter(10);      
+      assert.equal(11,counter.up());
+      assert.equal(10,counter.down());
+      assert.equal(9,counter.down());
+      assert.equal(10,counter.up());
+    });
+  });
+});
