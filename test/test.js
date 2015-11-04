@@ -315,10 +315,89 @@ describe('Exercise 22', function() {
   });
   describe('#revocable6', function () {
     it('should add or revoke', function () {         
-      var revocable = func.revocable6(func.add);      
+      var revocable = func.revocablebinary6(func.add);      
       assert.equal(7,revocable.invoke(3,4));
       revocable.revoke();
       assert.equal(undefined,revocable.invoke(11,3));      
     })
   });
 });
+
+describe('Exercise 22', function() {
+  describe('#addm', function () {
+    it('should show value and source', function () {         
+      var addResult1 = func.addm(func.m(3),func.m(4));
+      assert.equal('{"value":7,"source":"(3+4)"}',JSON.stringify(addResult1));      
+    });
+  });
+});
+
+describe('Exercise 23', function() {
+  describe('#liftm', function () {
+    it('should show add value and source', function () {         
+      var addm = func.liftm(func.add,"+");
+      assert.equal('{"value":7,"source":"(3+4)"}',JSON.stringify(addm(func.m(3),func.m(4))));      
+    });
+  });
+  describe('#liftm', function () {
+    it('should show mul value and source', function () {         
+      var mulm = func.liftm(func.mul,"*");
+      assert.equal('{"value":12,"source":"(3*4)"}',JSON.stringify(mulm(func.m(3),func.m(4))));      
+    });
+  });
+});
+
+describe('Exercise 24', function() {
+  describe('#liftm', function () {
+    it('should show add value and source', function () {         
+      var addm = func.liftm(func.add,"+");
+      assert.equal('{"value":7,"source":"(3+4)"}',JSON.stringify(addm(3,4)));      
+    });
+  });
+  describe('#liftm', function () {
+    it('should show mul value and source', function () {         
+      var mulm = func.liftm(func.mul,"*");
+      assert.equal('{"value":12,"source":"(3*4)"}',JSON.stringify(mulm(3,4)));
+    });
+  });
+});
+
+describe('Exercise 25', function() {
+  describe('#exp', function () {
+    it('should return a evaluated or literal object ', function () {               
+      var exp = func.exp;
+      assert.equal(5,exp([func.mul,1,5]));
+    });
+  });
+});
+
+describe('Exercise 26', function() {
+  describe('#exp', function () {
+    it('should return a evaluated or literal object ', function () {               
+      var exp = func.exp;
+      var nae = [
+      Math.sqrt, 
+        [
+          func.add,
+          [func.square, 3],
+          [func.square, 4]
+        ]
+      ];
+      assert.equal(5,exp(nae));
+    });
+  });
+});
+
+describe('Exercise 27', function() {
+  describe('#addg', function () {
+    it('should return a evaluated value', function () {          
+      var addg = func.addg;
+      assert.equal(0, addg());
+      assert.equal(2, addg(2)());
+      assert.equal(9, addg(2)(7)());
+      assert.equal(7, addg(3)(0)(4)());   
+    });
+  });
+});
+
+

@@ -356,3 +356,75 @@ export let revocable6 = (func) => {
 		revoke: () => { revoked = true }
 	}
 }
+
+export let revocablebinary6 = (binary) => {
+	return {
+		invoke: (x,y) => binary !== undefined ? binary(x,y) : undefined,
+		revoke: () => { binary = undefined }
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+export var m = function(value, source) {
+	return {
+		value:value,
+		source: (typeof source === 'string')
+			? source
+			: String(value)
+	};
+}
+
+export let addm = (m1,m2) => {	
+	return m(m1.value+m2.value, "("+m1.source+"+"+m2.source+")");
+}
+////////////////////////////////////////////////////////////////////////////////////////
+
+export let liftm = (func, operator) => {
+	return (m1,m2) => {
+		return m(func(m1.value || m1, m2.value || m2 ), "("+(m1.source || m1) +operator+ (m2.source || m2)+")");
+	}
+}
+
+export let liftm1 = (func, operator) => {
+	return (m1,m2) => {
+		if (typeof m1 === 'number'){
+			m1 = m(m1)
+		}
+		if (typeof m2 === 'number'){
+			m2 = m(m2)
+		}
+		return m(func(m1, m2), "("+m1+operator+m2+")");
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+export var exp = function(input){
+
+	if (Array.isArray(input)){
+		var func = input[0];
+		var n1 = exp(input[1]);
+		var n2 = exp(input[2]);		
+		return func(n1,n2);		
+	}else {
+		return input;
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+export let addg = function(input){	
+	if (input === undefined){
+		return 0;
+	}	
+	let rec = function(special){
+		if (special === undefined)
+			return input;
+		else{
+			return addg(special + input);
+		}
+	}
+	return rec;
+}
