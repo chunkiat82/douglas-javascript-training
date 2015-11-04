@@ -29,16 +29,30 @@ describe('Exercise 3', function() {
   });
 });
 
-describe('Exercise 4444', function() {
-  describe('#addf', function () {
+describe('Exercise 4', function() {
+  describe('#liftf add ', function () {
     it('should return 7', function () {     
-      assert.equal(7, func.addf(3)(4));
-      assert.equal(7, func.addf6(3)(4));      
+      assert.equal(7, func.liftf(func.addf)(3)(4));      
+    });
+  });
+  describe('#liftf mul', function () {
+    it('should return 30', function () {     
+      assert.equal(30, func.liftf(func.mulf)(5)(6));      
     });
   });
 });
 
+
 describe('Exercise 5', function() {
+  describe('#curry', function () {
+    it('should return 7', function () {     
+      assert.equal(7, func.curry(func.addf,3)(4));
+      assert.equal(7, func.curry6(func.addf,3)(4));
+    });
+  });
+});
+
+describe('Exercise 6', function() {
   describe('#inc1', function () {
     it('should return 22 for add and 121 for mul accordingly', function () {      
       assert.equal(6, func.inc1(5));
@@ -59,7 +73,7 @@ describe('Exercise 5', function() {
   });
 });
 
-describe('Exercise 6', function() {
+describe('Exercise 7', function() {
   describe('#twice', function () {
     it('should return 22 for add and 121 for mul accordingly', function () {      
       assert.equal(22, func.twice(func.add)(11));
@@ -70,7 +84,7 @@ describe('Exercise 6', function() {
   });
 });
 
-describe('Exercise 7', function() {
+describe('Exercise 8', function() {
   describe('#bus', function () {
     it('should return -1', function () {    	
       assert.equal(-1, func.bus(func.sub)(3,2));
@@ -79,7 +93,7 @@ describe('Exercise 7', function() {
   });
 });
 
-describe('Exercise 8', function() {
+describe('Exercise 9', function() {
   describe('#composeb', function () {
     it('should return 35', function () {    	
       assert.equal(35, func.composeb(func.add,func.mul)(2,3,7));
@@ -88,7 +102,7 @@ describe('Exercise 8', function() {
   });
 });
 
-describe('Exercise 9', function() {
+describe('Exercise 10', function() {
   describe('#limit', function () {
     it('should return undefined if called more than once', function () { 
       var add_ltd = func.limit(func.add,1);
@@ -98,7 +112,7 @@ describe('Exercise 9', function() {
   });
 });
 
-describe('Exercise 10', function() {
+describe('Exercise 11', function() {
   describe('#from', function () {
     it('should return 0,1,2,3', function () {       
       var index = func.from(0);
@@ -110,7 +124,7 @@ describe('Exercise 10', function() {
   });
 });
 
-describe('Exercise 11', function() {
+describe('Exercise 12', function() {
   describe('#to', function () {
     it('should return 1,2,undefined', function () {       
       var index = func.to(func.from(1),3);
@@ -121,7 +135,7 @@ describe('Exercise 11', function() {
   });
 });
 
-describe('Exercise 12', function() {
+describe('Exercise 13', function() {
   describe('#fromTo', function () {
     it('should return 1,2,undefined', function () {       
       var index = func.fromTo(0,3);

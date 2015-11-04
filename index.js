@@ -40,45 +40,36 @@ export let addf6 = num1 => num2 =>{
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
-var mulf =function mulf(arg){
+export var mulf =function mulf(arg){
 	return function(arg2){
 		return arg*arg2;
 	}
 }
 
 
-var liftf = function liftf(func){
+export  var liftf = function liftf(func){
 	return function(x){
 		return function (y){
 			return func(x)(y);
 		}
 	}
 }
-// console.log(liftf(addf)(3)(4)===7);
 
-let liftf6 = func => x => y=> {
+export  let liftf6 = func => x => y=> {
 	return func(x)(y);
 }
 
-// console.log(liftf(mulf)(5)(6)===30);
-
-
 ////////////////////////////////////////////////////////////////////////////////////////
 
-var curry = function curry(func, x){
+export var curry = function curry(func, x){
 	return function (y){
 		return func(x)(y);
 	}
 }
 
-// console.log(curry(addf,3)(4)===7);
-
-let curry6 = (func, x) => y=> {
+export  let curry6 = (func, x) => y=> {
 	return func(x)(y);
 }
-
-// console.log(curry(addf,3)(4)===7);
-
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
