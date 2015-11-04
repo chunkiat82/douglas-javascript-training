@@ -305,8 +305,7 @@ export var fibonaccif = function(x,y){
 	});
 }
 
-export var fibonacciffast = function(x,y){
-	var next = undefined;
+export var fibonacciffast = function(x,y){	
 	return function(){
 		var next = x;
 		x = y;
@@ -386,7 +385,7 @@ export let liftm = (func, operator) => {
 	}
 }
 
-export let liftm1 = (func, operator) => {
+export let liftm1																																									 = (func, operator) => {
 	return (m1,m2) => {
 		if (typeof m1 === 'number'){
 			m1 = m(m1)
@@ -415,15 +414,15 @@ export var exp = function(input){
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
-export let addg = function(input){	
-	if (input === undefined){
+export let addg = function(input1){	
+	if (input1 === undefined){
 		return 0;
 	}	
-	let rec = function(special){
-		if (special === undefined)
-			return input;
+	let rec = function(input2){
+		if (input2 === undefined)
+			return input1;
 		else{
-			return addg(special + input);
+			return addg(input2 + input1);
 		}
 	}
 	return rec;
