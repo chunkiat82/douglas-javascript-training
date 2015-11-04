@@ -156,3 +156,14 @@ describe('Exercise 13', function() {
     });
   });
 });
+
+describe('Exercise 14', function() {
+  describe('#element', function () {
+    it('should return b,c,d', function () {       
+      var ele = func.element(['a','b','c','d'],func.fromTo(1,3));
+      assert.equal('b',ele());
+      assert.equal('c',ele());
+      assert.equal(undefined,ele());      
+    });
+  });
+});

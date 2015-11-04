@@ -179,3 +179,8 @@ export var fromTo2 = function(start,end){
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
+export var element = function(array, func){
+	return function(){
+		return array[func()]
+	}
+}
