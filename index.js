@@ -327,3 +327,10 @@ export var counter = function(i){
 		}
 	}
 }
+
+export let counter6 = i => {
+	return {
+		up: () => { return ++i },
+		down: () => { return --i}
+	}
+}

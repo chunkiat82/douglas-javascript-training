@@ -284,12 +284,18 @@ describe('Exercise 20', function() {
 });
 
 describe('Exercise 21', function() {
-  describe('#gensymf', function () {
-    it('should go up and down', function () {   
-      var three = function(value){
-        return (value % 3) === 0;
-      }
+  describe('#counter', function () {
+    it('should go up and down', function () {         
       var counter = func.counter(10);      
+      assert.equal(11,counter.up());
+      assert.equal(10,counter.down());
+      assert.equal(9,counter.down());
+      assert.equal(10,counter.up());
+    });
+  });
+   describe('#counter6', function () {
+    it('should go up and down', function () {         
+      var counter = func.counter6(10);      
       assert.equal(11,counter.up());
       assert.equal(10,counter.down());
       assert.equal(9,counter.down());
