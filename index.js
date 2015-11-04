@@ -269,12 +269,26 @@ export var concat2  = function concat2(func1, func2){
 	}
 }
 
+// export let concat3 = function concat3(...func){
+// 	const next = elements(func);
+// 	let gen = next();
+// 	return function(){
+// 		var value = gen();
+// 		if (value !== undefined){			
+// 			return value;
+// 		}else{
+// 			gen = next();
+// 		}
+// 		return gen();
+// 	}
+// }
+
 ////////////////////////////////////////////////////////////////////////////////////////
 
-export var gensymf = function(gen){
+export var gensymf = function(prefix){
 	var index = 1;
 	return function(){
-		var value = String(gen)+index;
+		var value = String(prefix)+index;
 		index += 1;		
 		return value;
 	}
