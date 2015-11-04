@@ -166,4 +166,34 @@ describe('Exercise 14', function() {
       assert.equal(undefined,ele());      
     });
   });
+  describe('#elementCorrect', function () {
+    it('should return b,c,d', function () {       
+      var ele = func.elementCorrect(['a','b','c','d'],func.fromTo(1,3));
+      assert.equal('b',ele());
+      assert.equal('c',ele());
+      assert.equal(undefined,ele());      
+    });
+  });
+});
+
+describe('Exercise 15', function() {
+  describe('#element', function () {
+    it('should return b,c,d', function () {       
+      var ele = func.elementOptional(['a','b','c','d']);
+      assert.equal('a',ele());
+      assert.equal('b',ele());
+      assert.equal('c',ele());
+      assert.equal('d',ele());
+      assert.equal(undefined,ele());
+    });
+  });
+
+  describe('#element', function () {
+    it('should return b,c,d', function () {       
+      var ele = func.elementOptional(['a','b','c','d'],func.fromTo(1,3));      
+      assert.equal('b',ele());
+      assert.equal('c',ele());      
+      assert.equal(undefined,ele());
+    });
+  });
 });

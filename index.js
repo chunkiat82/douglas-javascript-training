@@ -184,3 +184,34 @@ export var element = function(array, func){
 		return array[func()]
 	}
 }
+
+export var elementCorrect = function(array, func){
+	return function(){
+		var index = func();
+		if (index !== undefined){
+			return array[index];
+		}	
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+export var elementOptional = function(array, func){
+	var index = -1;
+	return function(){
+		if (func !== undefined){
+			index = func();
+		}else{
+			index += 1;
+		}
+
+		if (index !== undefined){
+			return array[index];
+		}	
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+
