@@ -199,7 +199,7 @@ describe('Exercise 15', function() {
 });
 
 describe('Exercise 16', function() {
-  describe('#element', function () {
+  describe('#collect', function () {
     it('should return 0,1,undefined and the array', function () {   
       var array = [];    
       var col = func.collect(func.fromTo(0,2), array);
@@ -210,3 +210,18 @@ describe('Exercise 16', function() {
     });
   });
 });
+
+describe('Exercise 17', function() {
+  describe('#filter', function () {
+    it('should return 0,3 and undefined', function () {   
+      var three = function(value){
+        return (value % 3) === 0;
+      }
+      var fil = func.filter(func.fromTo(0,5),three);
+      assert.equal(0,fil());
+      assert.equal(3,fil());
+      assert.equal(undefined,fil());      
+    });
+  });
+});
+

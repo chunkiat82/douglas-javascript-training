@@ -224,3 +224,21 @@ export var collect = function (func, array){
 		return;		
 	}
 }
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+var three = function(value){
+	return (value % 3) === 0;
+}
+export var filter = function filter(func1, func2){
+	return function(){
+		var value = func1();
+		if (value !== undefined){
+			if (func2(value)){
+				return value;
+			}else{
+				return filter(func1, func2)();
+			}	
+		}
+	}
+}
