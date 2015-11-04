@@ -197,3 +197,16 @@ describe('Exercise 15', function() {
     });
   });
 });
+
+describe('Exercise 16', function() {
+  describe('#element', function () {
+    it('should return 0,1,undefined and the array', function () {   
+      var array = [];    
+      var col = func.collect(func.fromTo(0,2), array);
+      assert.equal(0,col());
+      assert.equal(1,col());
+      assert.equal(undefined,col());
+      assert.deepEqual([0,1],array);
+    });
+  });
+});

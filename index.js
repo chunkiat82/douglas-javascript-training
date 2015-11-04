@@ -214,4 +214,13 @@ export var elementOptional = function(array, func){
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
-
+export var collect = function (func, array){
+	return function(){
+		var value = func();
+		if (value !== undefined){
+			array.push(value)
+			return value;	
+		}
+		return;		
+	}
+}
