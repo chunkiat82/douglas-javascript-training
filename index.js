@@ -227,9 +227,6 @@ export var collect = function (func, array){
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
-var three = function(value){
-	return (value % 3) === 0;
-}
 export var filter = function filter(func1, func2){
 	return function(){
 		var value = func1();
@@ -240,5 +237,45 @@ export var filter = function filter(func1, func2){
 				return filter(func1, func2)();
 			}	
 		}
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+export var concat  = function concat(func1, func2){
+	return function(){
+		var value = func1();
+		if (value !== undefined){			
+				return value;
+		}else{
+			value = func2();
+			if (value != undefined){
+				return value;
+			}
+		}
+	}
+}
+
+export var concat2  = function concat2(func1, func2){
+	var gen = func1;
+	return function(){
+		var value = gen();
+		if (value !== undefined){			
+			return value;
+		}else{
+			gen = func2;
+		}
+		return gen();
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+export var gensymf = function(gen){
+	var index = 1;
+	return function(){
+		var value = String(gen)+index;
+		index += 1;		
+		return value;
 	}
 }

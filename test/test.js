@@ -225,3 +225,35 @@ describe('Exercise 17', function() {
   });
 });
 
+describe('Exercise 18', function() {
+  describe('#concat', function () {
+    it('should return 0,3 and undefined', function () {   
+      var three = function(value){
+        return (value % 3) === 0;
+      }
+      var con = func.concat2(func.fromTo(0,3),func.fromTo(0,2));
+      assert.equal(0,con());
+      assert.equal(1,con());
+      assert.equal(2,con());
+      assert.equal(0,con());
+      assert.equal(1,con());
+      assert.equal(undefined,con());      
+    });
+  });
+});
+
+describe('Exercise 19', function() {
+  describe('#gensymf', function () {
+    it('should return G and H', function () {   
+      var three = function(value){
+        return (value % 3) === 0;
+      }
+      var geng = func.gensymf("G");
+      var genh = func.gensymf("H");
+      assert.equal("G1",geng());
+      assert.equal("H1",genh());
+      assert.equal("G2",geng());
+      assert.equal("H2",genh());
+    });
+  });
+});
