@@ -506,9 +506,6 @@ export var liftg = function(input){
 
 }
 
-// console.log(liftg(mul)());
-// console.log(liftg(mul)(2)(3)());
-
 ////////////////////////////////////////////////////////////////////////////////////////
 
 export var arrayg = function(input){
@@ -526,9 +523,6 @@ export var arrayg = function(input){
 	return x(input);
 	
 }
-
-// console.log(arrayg());// = []
-// console.log(arrayg(3)());// = [3]
 
 ////////////////////////////////////////////////////////////////////////////////////////
 

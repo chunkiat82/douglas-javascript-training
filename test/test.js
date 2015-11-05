@@ -421,3 +421,39 @@ describe('Exercise 27', function() {
 });
 
 
+describe('Exercise 28', function() {
+  describe('#liftg', function () {
+    it('should return a evaluated value', function () {          
+      var liftg = func.liftg;
+      assert.equal(undefined, liftg(func.mul)());
+      assert.equal(2, liftg(func.mul)(2)());
+      assert.equal(14, liftg(func.mul)(2)(7)());      
+    });
+  });
+});
+
+describe('Exercise 29', function() {
+  describe('#arrayg', function () {
+    it('should return a evaluated value', function () {          
+      var arrayg = func.arrayg;
+      assert.deepEqual([], arrayg());
+      assert.deepEqual([3], arrayg(3)());
+      assert.deepEqual([3,6], arrayg(3)(6)());      
+    });
+  });
+});
+
+describe('Exercise 30', function() {
+  describe('#callback', function () {
+    it('should return a evaluated value', function () {          
+      var continuize = func.continuize;
+      continuize(Math.sqrt)(function(input){
+        assert.equal(9, input);
+      },81)      
+    });
+  });
+});
+
+
+
+
