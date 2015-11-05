@@ -6,12 +6,8 @@ export let sub = (x,y) => {
     return add(x,-y);
 }
 
-export let mul = (x,y) => {
-	var loop = i => {
-		if (i === 0) return 0;
-		return add(loop(i-1),x);
-	}
-    return loop(y);
+export let mul = (x,y) => {	
+    return x * y;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -377,6 +373,7 @@ export var m = function(value, source) {
 export let addm = (m1,m2) => {	
 	return m(m1.value+m2.value, "("+m1.source+"+"+m2.source+")");
 }
+
 ////////////////////////////////////////////////////////////////////////////////////////
 
 export let liftm = (func, operator) => {
@@ -413,21 +410,13 @@ export var exp = function(input){
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
-export var addg = function(input1){	
-	if (input1 === undefined){
-		return 0;
-	}
-	return function(input2){
-		if (input2 === undefined)
-			return input1;
-		else{
-			return addg(input2 + input1);
-		}
-	}
-}
 
-export var addg1 = function(input1){		
-	return input1 === undefined ? 0 : function(input2){
+export var addg = function(input1){		
+	if (input1 === undefined){
+		return undefined;
+	}
+
+	return function(input2){
 		if (input2 === undefined)
 			return input1;
 		else{
@@ -436,17 +425,51 @@ export var addg1 = function(input1){
 	}
 }
 
-export var addg2 = function(input1){	
-	if (input1 === undefined){
-		return 0;
+export var addgAlternate = function(input1){	
+	
+	function x(input2){
+		if (input2 === undefined)
+			//returning the sum (input)
+			return input1; 
+		else{
+			return addgAlternate(input2 + input1);
+		}
 	}
-	return function(input2){
-		return addg2()
+	return input1 === undefined ? undefined : x;
+}
+
+/*
+2
+function(input2){
+	if (input2 === undefined)
+		return input1;
+	else{
+		return addg(input2 + input1);
+	}
+}(7) ->
+9
+function(input2){
+	if (input2 === undefined)
+		return input1;
+	else{
+		return addg(input2 + input1);
+	}
+}() ->
+9 which is input
+*/
+
+export var addg1 = function(input1){		
+	return input1 === undefined ? undefined : function(input2){
+		if (input2 === undefined)
+			return input1;
+		else{
+			return addg1(input2 + input1);
+		}
 	}
 }
 
 export let addg5 = input1 => {		
-	return input1 === undefined ? 0 : input2 => {
+	return input1 === undefined ? undefined : input2 => {
 		if (input2 === undefined)
 			return input1;
 		else{
@@ -455,8 +478,70 @@ export let addg5 = input1 => {
 	}
 }
 
-export let addg6 = input1 => {		
-	return input1 === undefined ? 0 : input2 => {
-		return input2 === undefined ? input1 : addg6(input2 + input1);		
+export let addg6 = input1 => {
+	return input1 === undefined ? undefined : input2 => {
+		return input2 === undefined ? input1 : addg6(input2 + input1);
 	}
 }
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+export var liftg = function(input){
+	
+	var func = input;
+	return function x(input2){		
+		var total = 1;
+		if (input2 === undefined){
+			return undefined;
+		}
+		function y(input3){
+			if (input3 === undefined){
+				return total;
+			}
+			total = func(input3,total);			
+			return y;
+		}
+		return y(input2);
+	}
+
+}
+
+// console.log(liftg(mul)());
+// console.log(liftg(mul)(2)(3)());
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+export var arrayg = function(input){
+	var array = [];	
+	if (input === undefined){			
+		return array;
+	}
+	function x(input2){
+		if (input2 === undefined){			
+			return array;
+		}
+		array.push(input2);
+		return x; 
+	}
+	return x(input);
+	
+}
+
+// console.log(arrayg());// = []
+// console.log(arrayg(3)());// = [3]
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+/* make a function continuize that takes a unary 
+function and returns a function that takes a callback and an argument
+*/
+
+export var continuize = function(func){
+	return function(cb, value){
+		return cb(func(value));
+	}
+}
+
+// continuize(Math.sqrt)(console.log,81);
+
+////////////////////////////////////////////////////////////////////////////////////////

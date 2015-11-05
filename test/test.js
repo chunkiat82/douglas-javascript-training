@@ -392,7 +392,7 @@ describe('Exercise 27', function() {
   describe('#addg', function () {
     it('should return a evaluated value', function () {          
       var addg = func.addg;
-      assert.equal(0, addg());
+      assert.equal(undefined, addg());
       assert.equal(2, addg(2)());
       assert.equal(9, addg(2)(7)());
       assert.equal(7, addg(3)(0)(4)());   
@@ -401,7 +401,7 @@ describe('Exercise 27', function() {
   describe('#addg1', function () {
     it('should return a evaluated value', function () {          
       var addg = func.addg1;
-      assert.equal(0, addg());
+      assert.equal(undefined, addg());
       assert.equal(2, addg(2)());
       assert.equal(9, addg(2)(7)());
       assert.equal(7, addg(3)(0)(4)());   
@@ -411,7 +411,7 @@ describe('Exercise 27', function() {
   describe('#addg6', function () {
     it('should return a evaluated value', function () {          
       var addg = func.addg6;
-      assert.equal(0, addg());
+      assert.equal(undefined, addg());
       assert.equal(2, addg(2)());
       assert.equal(9, addg(2)(7)());
       assert.equal(7, addg(3)(0)(4)());
